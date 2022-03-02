@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Collapse, Fade } from "../../../components/animations";
+import { Accordion, Fade } from "../../../components/animations";
 import { Button, ButtonColor, Checkbox } from "../../../components/form-control";
 import { DELETE_FLAG, Todo } from "../../../types/todo";
 import { TodoForm } from "./TodoForm";
@@ -14,7 +14,7 @@ interface TodoItemProps {
 }
 
 export function TodoItem({ todo, bulkFlag, onBulkCheck, onEdit, onDelete }: TodoItemProps) {
-  const [fadedout, setFadeout] = useState(false);
+  const [fadedOut, setFadeOut] = useState(false);
   const [expand, setExpand] = useState(false);
 
   function handleEdit(todo: Todo) {
@@ -25,7 +25,7 @@ export function TodoItem({ todo, bulkFlag, onBulkCheck, onEdit, onDelete }: Todo
   return (
     <Fade
       className={classes["todo-item__container"]}
-      fadeOut={fadedout || todo[DELETE_FLAG] || false}
+      fadeOut={fadedOut || todo[DELETE_FLAG] || false}
       onFadedOut={() => onDelete(todo.id)}
     >
       <header className={classes["todo-item__header"]}>
@@ -36,16 +36,16 @@ export function TodoItem({ todo, bulkFlag, onBulkCheck, onEdit, onDelete }: Todo
           <Button color={ButtonColor.Info} onClick={() => setExpand(!expand)}>
             Detail
           </Button>
-          <Button color={ButtonColor.Danger} onClick={() => setFadeout(true)}>
+          <Button color={ButtonColor.Danger} onClick={() => setFadeOut(true)}>
             Remove
           </Button>
         </div>
       </header>
-      <Collapse expand={expand}>
+      <Accordion expand={expand}>
         <section className={classes["todo-item__form"]}>
           <TodoForm initialValue={{ ...todo }} onSubmit={handleEdit} />
         </section>
-      </Collapse>
+      </Accordion>
     </Fade>
   );
 }
