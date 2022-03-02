@@ -1,5 +1,7 @@
+import { TodoPage } from "./pages/todo";
+
 function App() {
-  return <div className="App"></div>;
+  return <TodoPage />;
 }
 
 export default App;
