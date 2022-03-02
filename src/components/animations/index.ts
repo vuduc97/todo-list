@@ -1,2 +1,2 @@
-export { Collapse } from './collapse/collapse';
+export { Accordion } from './collapse/accordion';
 export { Fade } from './fade/fade';
