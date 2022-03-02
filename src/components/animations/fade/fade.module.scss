@@ -1,0 +1,22 @@
+.fade__container {
+  animation-name: fadeIn;
+  animation-timing-function: ease-in-out;
+  min-height: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  99% {
+    height: 64px;
+    opacity: 0.999;
+    overflow: hidden;
+  }
+  100% {
+    opacity: 1;
+    overflow: initial;
+  }
+}

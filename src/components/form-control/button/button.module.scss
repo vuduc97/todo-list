@@ -1,0 +1,30 @@
+.button {
+  background-color: #6c757d;
+  border: none;
+  min-width: 80px;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  color: #fff;
+  transition: all 0.2s linear;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.success {
+    background-color: #55bb59;
+  }
+
+  &.danger {
+    background-color: #dc3545;
+  }
+
+  &.info {
+    background-color: #00bcd4;
+  }
+
+  &.warning {
+    background-color: #ffc107;
+  }
+}
