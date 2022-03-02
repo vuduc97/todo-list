@@ -1,0 +1,22 @@
+.todo-item__container {
+  border: 1px solid #000;
+  margin-bottom: 1rem;
+
+  .todo-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+  }
+
+  .todo-item__action {
+    & > button:first-child {
+      margin-right: 0.75rem;
+    }
+  }
+
+  .todo-item__form {
+    padding: 0 1.5rem 3.5rem;
+    border-top: 1px solid #000;
+  }
+}

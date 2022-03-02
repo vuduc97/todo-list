@@ -1,0 +1,11 @@
+.todo__container {
+  margin: 10px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 801px) {
+  .todo__container {
+    flex-direction: column;
+  }
+}
