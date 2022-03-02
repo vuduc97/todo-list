@@ -1,16 +1,21 @@
+import { useState } from "react";
 import { useStore } from "../../contexts/store-context/store-context";
 import { Action } from "../../types/store-context";
 import { DELETE_FLAG, Todo } from "../../types/todo";
 import { Button, ButtonColor, TextField } from "../../components/form-control";
-import { useState } from "react";
 import classes from "./assets/todo-list.module.scss";
 import { TodoItem } from "./components/TodoItem";
 import { Accordion } from "../../components/animations";
+import clsx from "clsx";
 
 export function TodoListContainer() {
   const [bulkItems, setBulkItems] = useState<number[]>([]);
   const [searchKeyword, setSearchKeyword] = useState<string>("");
   const { dispatch, todos } = useStore();
+  const todoListContainerStyle = clsx({
+    [classes["todo-list__container"]]: true,
+    [classes["todo-list__container-has-bulk"]]: bulkItems.length > 0,
+  });
 
   function editTodo(todo: Todo) {
     dispatch({ type: Action.Edit, payload: { ...todo, [DELETE_FLAG]: false } });
@@ -43,7 +48,7 @@ export function TodoListContainer() {
   }
 
   return (
-    <div className={classes["todo-list__container"]}>
+    <div className={todoListContainerStyle}>
       <h1 className={classes["todo-list__title"]}>Todo List</h1>
       <section className={classes["todo-list__list"]}>
         <TextField
@@ -66,8 +71,9 @@ export function TodoListContainer() {
           ))}
         </section>
       </section>
-      <Accordion expand={bulkItems.length > 0}>
-        <section className={classes["todo-list__bulk"]}>
+
+      <section className={classes["todo-list__bulk__container"]}>
+        <Accordion className={classes["todo-list__bulk"]} expand={bulkItems.length > 0}>
           <p>Bulk Action</p>
           <div className={classes["todo-list__bulk__action"]}>
             <Button color={ButtonColor.Info} type="button">
@@ -77,8 +83,8 @@ export function TodoListContainer() {
               Remove
             </Button>
           </div>
-        </section>
-      </Accordion>
+        </Accordion>
+      </section>
     </div>
   );
 }
