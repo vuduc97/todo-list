@@ -4,6 +4,7 @@ import classes from "./accordion.module.scss";
 interface AccordionProps {
   expand: boolean;
   duration?: number;
+  className?: string;
 }
 
 enum AccordionStatus {
@@ -14,7 +15,7 @@ enum AccordionStatus {
   Collapsed,
 }
 
-export const Accordion: FC<AccordionProps> = ({ children, duration = 350, expand }) => {
+export const Accordion: FC<AccordionProps> = ({ children, duration = 350, expand, className }) => {
   const [accordionType, setAccordionStatus] = useState<AccordionStatus>(
     expand ? AccordionStatus.Expanded : AccordionStatus.Collapsed,
   );
@@ -106,10 +107,11 @@ export const Accordion: FC<AccordionProps> = ({ children, duration = 350, expand
           height: `${contentElement.current?.offsetHeight}px`,
         };
       }
-      case AccordionStatus.Collapsing:
+      case AccordionStatus.Collapsing: {
         return {
           transitionDuration: `${duration}ms`,
         };
+      }
       case AccordionStatus.Collapsed:
       default: {
         return undefined;
@@ -121,7 +123,11 @@ export const Accordion: FC<AccordionProps> = ({ children, duration = 350, expand
 
   return (
     <section ref={containerElement} style={getStyle()} className={classes["accordion__container"]}>
-      {isDisplay && <div ref={contentElement}>{children}</div>}
+      {isDisplay && (
+        <div className={className} ref={contentElement}>
+          {children}
+        </div>
+      )}
     </section>
   );
 };

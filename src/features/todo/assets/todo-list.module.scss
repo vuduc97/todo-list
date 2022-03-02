@@ -2,6 +2,8 @@
   width: 60%;
   border: 1px solid #000;
   border-left: 0;
+  position: relative;
+  transition: padding 0.35s ease-in-out;
 
   .todo-list__title {
     margin: 1rem 0 0;
@@ -20,16 +22,27 @@
     }
   }
 
-  .todo-list__bulk {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    border-top: 1px solid #000;
-    background-color: #ccc;
+  &.todo-list__container-has-bulk {
+    padding-bottom: 75px;
+  }
 
-    .todo-list__bulk__action > button:first-child {
-      margin-right: 0.5rem;
+  .todo-list__bulk__container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    .todo-list__bulk {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid #000;
+      background-color: #ccc;
+
+      .todo-list__bulk__action > button:first-child {
+        margin-right: 0.5rem;
+      }
     }
   }
 }
