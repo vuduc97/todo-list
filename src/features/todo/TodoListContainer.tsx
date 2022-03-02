@@ -5,6 +5,7 @@ import { Button, ButtonColor, TextField } from "../../components/form-control";
 import { useState } from "react";
 import classes from "./assets/todo-list.module.scss";
 import { TodoItem } from "./components/TodoItem";
+import { Accordion } from "../../components/animations";
 
 export function TodoListContainer() {
   const [bulkItems, setBulkItems] = useState<number[]>([]);
@@ -65,7 +66,7 @@ export function TodoListContainer() {
           ))}
         </section>
       </section>
-      {bulkItems.length > 0 && (
+      <Accordion expand={bulkItems.length > 0}>
         <section className={classes["todo-list__bulk"]}>
           <p>Bulk Action</p>
           <div className={classes["todo-list__bulk__action"]}>
@@ -77,7 +78,7 @@ export function TodoListContainer() {
             </Button>
           </div>
         </section>
-      )}
+      </Accordion>
     </div>
   );
 }
