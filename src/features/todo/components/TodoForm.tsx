@@ -11,14 +11,19 @@ interface TodoFormProps {
 }
 
 export function TodoForm({ onSubmit, initialValue = { ...DEFAULT_TODO } }: TodoFormProps) {
-  const { errors, getFieldValue, setFieldValue, handleSubmit } = useForm<Todo>({
+  const { errors, getFieldValue, setFieldValue, handleSubmit, reset } = useForm<Todo>({
     initValue: { ...initialValue },
     validations: {
       name: [string().required("name", "Task title is required")],
       dueDate: [date().presentOrFutureDate("dueDate", "Due date must be greater than or equal to the current date")],
     },
-    submit: onSubmit,
+    submit,
   });
+
+  function submit(todo: Todo) {
+    onSubmit(todo);
+    reset();
+  }
 
   return (
     <form onSubmit={handleSubmit} className={classes["todo-form"]}>
@@ -36,7 +41,7 @@ export function TodoForm({ onSubmit, initialValue = { ...DEFAULT_TODO } }: TodoF
           value={getFieldValue("description")}
           onChange={setFieldValue}
           name="description"
-          label="description"
+          label="Description"
         />
       </div>
       <div className={classes["todo-form__group"]}>
