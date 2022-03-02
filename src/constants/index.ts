@@ -1,6 +1,7 @@
 import { Todo } from './../types/todo';
 import { KeyValue } from './../types/common';
 import { Priority } from "../types/todo";
+import { getLocalCurrentTime } from '../utils';
 
 export const PRIORITY_OPTIONS: KeyValue<number, string>[] = [
     {
@@ -23,6 +24,6 @@ export const DEFAULT_TODO: Todo = {
     id: -1,
     name: "",
     priority: Priority.Normal,
-    dueDate: new Date().toISOString().slice(0, 10),
+    dueDate: getLocalCurrentTime(),
     description: ""
 }
