@@ -1,0 +1,35 @@
+.todo-form {
+  width: 100%;
+
+  .todo-form__group {
+    margin-top: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+
+    & > div:not(:last-child) {
+      margin-right: 1.25rem;
+    }
+
+    .todo-form__item {
+      width: 50%;
+    }
+
+    .todo-form__action {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .todo-form__group {
+    flex-direction: column;
+
+    & > div:not(:last-child) {
+      margin-right: 0 !important;
+    }
+
+    .todo-form__item {
+      width: 100% !important;
+    }
+  }
+}
