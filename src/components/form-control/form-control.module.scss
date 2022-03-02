@@ -1,0 +1,37 @@
+.form-control__container {
+  width: 100%;
+
+  .form-control__label {
+    display: inline-block;
+    margin: 0.5rem 0.125rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .form-control__input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid #cccc;
+    border-radius: 0.2rem;
+
+    &:focus {
+      border-color: #2d3436;
+    }
+
+    &.form-control__input--invalid {
+      border-color: #dc3545;
+
+      &:focus {
+        border-color: #dc3545;
+        outline-color: #dc3545;
+      }
+    }
+  }
+
+  & .form-control__helptext {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+  }
+}
