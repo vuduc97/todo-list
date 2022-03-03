@@ -71,7 +71,6 @@ export function TodoListContainer() {
           ))}
         </section>
       </section>
-
       <section className={classes["todo-list__bulk__container"]}>
         <Accordion className={classes["todo-list__bulk"]} expand={bulkItems.length > 0}>
           <p>Bulk Action</p>

@@ -7,16 +7,37 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
-  }
 
-  .todo-item__action {
-    & > button:first-child {
-      margin-right: 0.75rem;
+    .todo-item__title {
+      width: 50%;
+    }
+
+    .todo-item__action {
+      display: flex;
+
+      & > button:first-child {
+        margin-right: 0.75rem;
+      }
     }
   }
 
   .todo-item__form {
     padding: 0 1.5rem 1.4rem;
     border-top: 1px solid #000;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .todo-item__container {
+    .todo-item__header {
+      .todo-item__action {
+        flex-direction: column;
+
+        & > button:first-child {
+          margin-right: 0;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
   }
 }
