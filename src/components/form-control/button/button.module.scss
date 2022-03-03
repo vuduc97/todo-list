@@ -28,3 +28,9 @@
     background-color: #ffc107;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .button {
+    padding: 0.5rem 0.75rem;
+  }
+}

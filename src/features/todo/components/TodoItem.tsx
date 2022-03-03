@@ -29,7 +29,7 @@ export function TodoItem({ todo, bulkFlag, onBulkCheck, onEdit, onDelete }: Todo
       onFadedOut={() => onDelete(todo.id)}
     >
       <header className={classes["todo-item__header"]}>
-        <div>
+        <div className={classes["todo-item__title"]}>
           <Checkbox checked={bulkFlag} label={todo.name} onChange={() => onBulkCheck(todo.id)} />
         </div>
         <div className={classes["todo-item__action"]}>
